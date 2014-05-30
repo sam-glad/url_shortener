@@ -1,0 +1,14 @@
+<% @urls.each do |url| %>
+<table width="900">
+  <thead>
+  <th width="100" align="left">Site</th>
+  <th width="100" align="left">Shortened URL</th>
+  </thead>
+  <tr>
+  <td><a href="/movies/<%="#{movie["id"]}"%>"><%= movie["title"] %></a></td>
+  <td> <%= url["site_name"] %> </td>
+  <td> <%= url["shortened"] %> </td>
+  </tr>
+</table>
+<% end %>
+
