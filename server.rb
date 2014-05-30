@@ -49,27 +49,3 @@ get '/:shrunken' do
     end
   end
 end
-
-  # @urls = load_urls
-  # @page_id = params["shortened"]
-  # @urls.each do |url|
-  #   if url["shortened"] == @page_id
-  #     redirect @page_id
-  #   end
-  # end
-
-# end
-
-  # @urls.each do |url|
-  #   if url["url"] == @potato
-
-  #   end
-  # end
-
-  # @redir = "http://#{@urls["url"]}"
-  # @urls.each do |url|
-  #   if url["shortened"] == @potato
-  #     redirect @redir
-  #   end
-  # end
-# end
