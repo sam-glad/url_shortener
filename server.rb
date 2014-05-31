@@ -37,7 +37,7 @@ def locate_url(page_id) # TODO rename this
 end
 
 get '/' do
-  @title = "URL Sh0rt3n0rz"
+  @title = "SaZa"
   @page_title = @title
   @urls = load_urls
   erb :index
@@ -51,7 +51,6 @@ end
 
 get '/:url_num' do # url_num being the @shrunken in the above "post" block
   @page_id = params[:url_num]
-  @urls = load_urls
   @redir = locate_url(@page_id)
   redirect "http://#{@redir.first["url"]}"
 end
