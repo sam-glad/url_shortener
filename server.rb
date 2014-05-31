@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'pg'
+require 'pry'
 
 def load_urls
   connection = PG.connect(dbname: 'urls')
@@ -7,7 +8,7 @@ def load_urls
                           FROM urls')
   connection.close
 
-  urls
+  urls.to_a
 end
 
 def make_site_name(url)
@@ -26,26 +27,31 @@ def post_url(url, shrunken)
   connection.close
 end
 
+def locate_url(page_id) # TODO rename this
+  connection = PG.connect(dbname: 'urls')
+  url_shortened = connection.exec("SELECT urls.url
+                                   FROM urls WHERE urls.shortened = '#{page_id}'")
+  connection.close
+
+  url_shortened.to_a
+end
+
 get '/' do
   @title = "URL Sh0rt3n0rz"
   @page_title = @title
   @urls = load_urls
-
   erb :index
 end
 
 post '/' do
-  @shrunken = rand(1..1000).to_s
+  @shrunken = rand(1..1000).to_s # TODO method; check for existing number
   post_url(params["url"], @shrunken)
   redirect '/'
 end
 
-get '/:shrunken' do
+get '/:url_num' do # url_num being the @shrunken in the above "post" block
+  @page_id = params[:url_num]
   @urls = load_urls
-  @page_id = params["shrunken"]
-  @urls.each do |url|
-    if url["shortened"] == @page_id
-      redirect "http://#{url["url"]}"
-    end
-  end
+  @redir = locate_url(@page_id)
+  redirect "http://#{@redir.first["url"]}"
 end
