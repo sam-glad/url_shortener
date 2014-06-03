@@ -10,8 +10,10 @@ def db_connection
 end
 
 def load_urls
-  sql = ('SELECT urls.site_name, urls.shortened, urls.url FROM urls
-         ORDER BY created_at DESC')
+  sql = ('SELECT urls.site_name, urls.shortened, urls.url
+          FROM urls
+          ORDER BY created_at DESC
+          LIMIT 15')
   urls = db_connection do |conn|
            conn.exec(sql)
          end
@@ -67,7 +69,7 @@ def generate_short_url
 end
 
 def assign_short_url
-  short = "fooo"
+  short = generate_short_url
   while already_used?(short) # FIXME how to prevent this from entering an infinite loop?
     short = generate_short_url
   end

@@ -1,24 +1,34 @@
-<% @urls.each do |url| %>
-<table width="900">
-  <thead>
-  <th width="100" align="left">Site</th>
-  <th width="100" align="left">Shortened URL</th>
-  </thead>
-  <tr>
-  <td> <a href="http://<%= url["url"] %>" target="_blank">
-         <%= url["site_name"] %> </td>
-        </a>
-  <td> <a href="http://<%= url["url"]%>" target="_blank">
-          <%= "saza.la/#{url["shortened"]}" %> </td>
-        </a>
-  </tr>
-</table>
-<% end %>
+<div class="userInput">
+  <form action="/" method="post">
+    <label class="paddedLabel" for="url">URL:</label>
+    <input type="url" id="url" name="url" placeholder="URL goes here :)" required />
 
-<h2> Enter a new URL </h2>
-<form action="/" method="post">
-  <label for="url">URL:</label>
-  <input type="url" id="url" name="url" required />
+    <input type="submit" class="btn btn-success" value="SaZa!" />
+  </form>
+</div>
 
-  <input type="submit" value="Shorten!" />
-</form>
+<br>
+<div class="bigAssTable">
+  <table class="table table-hover">
+    <tbody>
+      <tr class="table_header">
+        <th>Recent SaZa'd Sites</th>
+        <th>New URL</th>
+      </tr>
+      <% @urls.each do |url| %>
+        <tr>
+          <td style="width:75%">
+            <a href="http://<%= url["url"] %>" target="_blank">
+            <%= url["site_name"] %> </td>
+            </a>
+          </td>
+          <td style="width:25%">
+            <a href="http://<%= url["url"]%>" target="_blank">
+            <%= "saza.la/#{url["shortened"]}" %> </td>
+            </a>
+          </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

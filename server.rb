@@ -1,4 +1,5 @@
 # server.rb
+# TODO add about page (erb file + content)
 # TODO automatically delete all links > 6 months old from database
 
 require 'sinatra'
