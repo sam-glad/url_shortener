@@ -1,4 +1,4 @@
-<div class="userInput">
+<div class="cent">
   <form action="/" method="post">
     <label class="paddedLabel" for="url">URL:</label>
     <input type="url" id="url" name="url" placeholder="URL goes here :)" required />
@@ -8,7 +8,7 @@
 </div>
 
 <br>
-<div class="bigAssTable">
+<div class="bigTable">
   <table class="table table-hover">
     <tbody>
       <tr class="table_header">
@@ -19,12 +19,12 @@
         <tr>
           <td style="width:75%">
             <a href="http://<%= url["url"] %>" target="_blank">
-            <%= url["site_name"] %> </td>
+              <%= url["site_name"] %> </td>
             </a>
           </td>
           <td style="width:25%">
             <a href="http://<%= url["url"]%>" target="_blank">
-            <%= "saza.la/#{url["shortened"]}" %> </td>
+              <%= "saza.la/#{url["shortened"]}" %> </td>
             </a>
           </td>
         </tr>
@@ -32,3 +32,7 @@
     </tbody>
   </table>
 </div>
+
+<p class="cent">
+  <%= @count %> links SaZa'd
+</p>

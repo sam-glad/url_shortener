@@ -11,6 +11,7 @@ get '/' do
   @title = "SaZa"
   @page_title = @title
   @urls = load_urls
+  @count = @urls.length
   erb :index
 end
 
