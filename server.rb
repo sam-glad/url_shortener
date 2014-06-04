@@ -16,9 +16,14 @@ get '/' do
 end
 
 post '/' do
-  @shrunken = assign_short_url # TODO method; check for existing number
+  @shrunken = assign_short_url
   post_url(params["url"], @shrunken)
   redirect '/'
+end
+
+get '/about' do
+  'Foobar!'
+  erb :about
 end
 
 get '/:url_num' do # url_num being the @shrunken in the above "post" block
@@ -26,3 +31,4 @@ get '/:url_num' do # url_num being the @shrunken in the above "post" block
   @redir = locate_url(@page_id)
   redirect "http://#{@redir.first["url"]}"
 end
+
