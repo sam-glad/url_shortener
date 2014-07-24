@@ -1,6 +1,4 @@
-source 'http://rubygems.org'
-
+source 'https://rubygems.org'
+gem 'rack'
 gem 'sinatra'
 gem 'pg'
-gem 'shotgun'
-gem 'pry'
