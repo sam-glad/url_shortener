@@ -25,6 +25,5 @@ get '/:url_num' do # url_num being the @shrunken in the above "post" block
 end
 
 get '/about' do
-  'Under construction...'
   erb :about
 end
